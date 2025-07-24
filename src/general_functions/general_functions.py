@@ -1,5 +1,8 @@
 # Source: https://pandas.pydata.org/docs/reference/api/pandas.concat.html
 import pandas as pd
+import numpy as np
+
+# *********** CONCAT *************
 #concat - Concatenate pandas objects along a particular axis.
 s1 = pd.Series(['a', 'b'])
 s2 = pd.Series(['c', 'd'])
@@ -29,4 +32,22 @@ df9 = pd.DataFrame([2], index=['a'])
 df11 = pd.DataFrame({'a': 1, 'b': 2}, index=[0]) #setting index to 0 explicitly
 new_row = pd.Series({'a': 3, 'b': 4})
 df12 = pd.concat([df11, new_row.to_frame().T], ignore_index=True) #to_frame() turns the Series into a DataFrame with one column per row and .T transposes it
-print(df12)
+
+# *********** UNIQUE *************
+# Return unique values based on a hash table.
+unq = pd.Series([1, 2, 2, 3, 4,4,5,3]).unique()
+#print(unq)
+unq1 = pd.Series([pd.Timestamp('20250101', tz='US/Eastern'), pd.Timestamp('20250101', tz='US/Eastern')]).unique()
+#print(unq1)
+
+# *********** ISNA *************
+# Detect missing values for an array-like object.
+array = np.array([[1, np.nan, 3], [4, 5, np.nan]])
+isNa = pd.isna(array)
+print(isNa)
+
+isNa1 = pd.DatetimeIndex(["2017-07-05", "2017-07-06", None, "2017-07-08"])
+print(isNa1)
+
+isNa2 = pd.DataFrame([['ant', 'bee', 'cat'], ['dog', None, 'fly']])
+print(isNa2)
