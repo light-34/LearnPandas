@@ -44,11 +44,22 @@ regex = r'^(\d{4})'
 extr = df['DateOf Pub'].str.extract(regex, expand=False)
 #print(f'Head \n{extr.head()}\n Dtype: \n {extr.dtypes}') #dtype is object we need to convert it to numeric
 
-#assigning numeric verion
+#assigning numeric version
 df['DateOf Pub'] = pd.to_numeric(extr)
-print(df['DateOf Pub'].isnull().sum() / len(df))
+#print(df['DateOf Pub'].isnull().sum() / len(df))
 
 #Combining str Methods with NumPy to Clean Columns
+pl = df['PlOf Pub']
+london = pl.str.contains('London')
+oxford = pl.str.contains('Oxford')
+
+df['PlOf Pub'] = np.where(london, 'London', np.where(oxford, 'Oxford', pl.str.replace('-', ' ')))
+#print(df['PlOf Pub'].head(100))
+
+#Cleaning the Entire Dataset Using the applymap Function
+
+
+
 
 # Continue from here https://realpython.com/python-data-cleaning-numpy-pandas/
 
