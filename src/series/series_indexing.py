@@ -93,6 +93,7 @@ d = {'num_legs': [4, 4, 2, 2],
 
 dfxs = pd.DataFrame(data=d)
 dfxs = dfxs.set_index(['class', 'animal', 'locomotion'])
-print(dfxs.xs('bird'))
+print(dfxs)
+print(dfxs.xs('mammal'))
 
 #https://pandas.pydata.org/docs/reference/api/pandas.Series.xs.html
