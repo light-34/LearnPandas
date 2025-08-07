@@ -6,6 +6,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 df = pd.read_csv('../A_Demo/diabetes.csv')
 
+print(df.ndim())
+
 x = df.drop('Outcome', axis=1)
 y = df['Outcome']
 

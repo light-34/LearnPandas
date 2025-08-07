@@ -15,6 +15,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 # Step 2: Load the dataset
 iris = load_iris()
+print(iris.DESCR)
 df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 df['target'] = iris.target
 # We convert the built-in dataset into a pandas DataFrame for easier handling.
